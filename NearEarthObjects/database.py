@@ -47,6 +47,8 @@ class NEODatabase:
         try:
             return self.neo_cad_dict[designation]
         except KeyError as e:
+            return None
+        else:
             return e
         
         
@@ -55,10 +57,14 @@ class NEODatabase:
         :param designation: The primary designation of the NEO to search for.
         :return: The `NearEarthObject` with the desired primary designation, or `None`.
         """
+        #Return None if corresponding neo is not found in get_neo_by_designation, get_neo_by_name
         try:
             return self.neoPerDesignation_dict[designation]
         except KeyError as e:
+            return None
+        else:
             return e
+
 
 
     def get_neo_by_name(self, name):
@@ -74,6 +80,8 @@ class NEODatabase:
         try:
             return self.neoPerName_dict[name]
         except KeyError as e:
+            return None
+        else:
             return e
 
     def query(self, filters=()):

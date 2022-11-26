@@ -16,7 +16,7 @@ class NearEarthObject:
         try:
             self.diameter = float(diameter)
         except ValueError:
-            self.diameter = 0.0
+            self.diameter = float("nan")
             
         if hazardous.lower() == "y":
             self.hazardous = True

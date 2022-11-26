@@ -175,45 +175,46 @@ def create_filters(date=None, start_date=None, end_date=None,
     :param hazardous: Whether the NEO of a matching `CloseApproach` is potentially hazardous.
     :return: A collection of filters for use with `query`.
     """
-#     filters_dict = {date:DateFilter(operator.eq, date),
-#                     start_date:DateFilter(operator.ge, start_date),
-#                     end_date:DateFilter(operator.le, end_date),
-#                     diameter_min:DiameterFilter(operator.ge, diameter_min),
-#                     diameter_max:DiameterFilter(operator.le, diameter_max),
-#                     distance_min:DistanceFilter(operator.ge, distance_min),
-#                     distance_max:DistanceFilter(operator.le, distance_max),
-#                     velocity_min:VelocityFilter(operator.ge, velocity_min),
-#                     velocity_max:VelocityFilter(operator.le, velocity_max)}
-    
-#     filters = [v for k,v in filters_dict.items() if k]
-#     if hazardous is not None:
-#          filters.append(HazardousFilter(operator.eq, hazardous))
-#     return filters  
-#     return tuple(filters)
 
-    filters = []
-    if date:
-        filters.append(DateFilter(operator.eq, date))
-    if start_date:
-        filters.append(DateFilter(operator.ge, start_date))
-    if end_date:
-        filters.append(DateFilter(operator.le, end_date))
-    if diameter_min:
-        filters.append(DiameterFilter(operator.ge, diameter_min))
-    if diameter_max:
-        filters.append(DiameterFilter(operator.le, diameter_max))
-    if distance_min:
-        filters.append(DistanceFilter(operator.ge, distance_min))
-    if distance_max:
-        filters.append(DistanceFilter(operator.le, distance_max))
-    if velocity_min:
-        filters.append(VelocityFilter(operator.ge, velocity_min))
-    if velocity_max:
-        filters.append(VelocityFilter(operator.le, velocity_max))
+    filters_dict = {"date": DateFilter(operator.eq, date),
+                    "start_date": DateFilter(operator.ge, start_date),
+                    "end_date": DateFilter(operator.le, end_date),
+                    "diameter_min": DiameterFilter(operator.ge, diameter_min),
+                    "diameter_max": DiameterFilter(operator.le, diameter_max),
+                    "distance_min": DistanceFilter(operator.ge, distance_min),
+                    "distance_max": DistanceFilter(operator.le, distance_max),
+                    "velocity_min": VelocityFilter(operator.ge, velocity_min),
+                    "velocity_max": VelocityFilter(operator.le, velocity_max)}
+    
+    filters = [v for k,v in filters_dict.items() if k if v.value is not None]
     if hazardous is not None:
         filters.append(HazardousFilter(operator.eq, hazardous))
-
+    
     return filters
+
+#     filters = []
+#     if date:
+#         filters.append(DateFilter(operator.eq, date))
+#     if start_date:
+#         filters.append(DateFilter(operator.ge, start_date))
+#     if end_date:
+#         filters.append(DateFilter(operator.le, end_date))
+#     if diameter_min:
+#         filters.append(DiameterFilter(operator.ge, diameter_min))
+#     if diameter_max:
+#         filters.append(DiameterFilter(operator.le, diameter_max))
+#     if distance_min:
+#         filters.append(DistanceFilter(operator.ge, distance_min))
+#     if distance_max:
+#         filters.append(DistanceFilter(operator.le, distance_max))
+#     if velocity_min:
+#         filters.append(VelocityFilter(operator.ge, velocity_min))
+#     if velocity_max:
+#         filters.append(VelocityFilter(operator.le, velocity_max))
+#     if hazardous is not None:
+#         filters.append(HazardousFilter(operator.eq, hazardous))
+
+#     return filters
 
 
 def limit(iterator, n = None):
