@@ -7,7 +7,7 @@ function and the filename supplied by the user at the command line. The file's
 extension determines which of these functions is used.
 You'll edit this file in Part 4.
 """
-
+import helpers
 import json
 import csv
 
@@ -43,8 +43,7 @@ def write_to_json(results, filename):
     """
     
     # list comprehension to save results in a json like way
-    results_list = 
-        [{"datetime_utc": helpers.datetime_to_str(row.time),
+    results_list = [{"datetime_utc": helpers.datetime_to_str(row.time),
             "distance_au": row.distance,
             "velocity_km_s": row.velocity,
             "neo": {"designation": row.neo.designation,
