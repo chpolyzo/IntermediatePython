@@ -224,6 +224,12 @@ def limit(iterator, n = None):
     :param n: The maximum number of values to produce.
     :yield: The first (at most) `n` values from the iterator.
     """
-    if n == 0 or n is None:
-        return iterator
-    return [a for it, a in enumerate(iterator) if it < n]
+#     if n == 0 or n is None:
+#         return iterator
+#     return [a for it, a in enumerate(iterator) if it < n]
+
+
+#   https://docs.python.org/3/library/itertools.html
+    if n:
+        return itertools.islice(iterator, n)
+    return iterator
