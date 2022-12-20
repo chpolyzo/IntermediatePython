@@ -1,3 +1,4 @@
+
 """
 Simple QuoteModel implementation class to encapsulate the body and author
 """
@@ -11,14 +12,12 @@ class QuoteModel:
         """Create a simple model using a quote author and a quote body."""
         self.author = str(author)
         self.body = str(body)
-        
 
     def __str__(self):
         """Override method representing the QuoteModel class objects as a string"""
-        return f"Author {self.author} of quote {self.body} in Simple Quote Model"
+        return f"{self.body} \n Quote by {self.author}"
 
     def __repr__(self):
         """Override method used to represent a class's objects as a string"""
         return f"Quote Model Author: {self.author}, Quote Model body: {self.body}"
-    
   
