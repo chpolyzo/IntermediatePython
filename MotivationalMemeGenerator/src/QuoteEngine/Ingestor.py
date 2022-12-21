@@ -13,6 +13,7 @@
     
     """
 
+from .QuoteModel import QuoteModel
 from .IngestorInterface import IngestorInterface
 from .CSVInterface import CSVInterface
 from .DOCXInterface import DOCXInterface

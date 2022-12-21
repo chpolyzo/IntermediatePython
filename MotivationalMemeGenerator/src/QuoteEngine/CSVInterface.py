@@ -15,9 +15,9 @@ class CSVInterface(IngestorInterface):
     def parse(cls, path: str) -> List[QuoteModel]:
         """Parse QuoteModel obj of csv files and return a list of them."""
         if not cls.can_ingest(path):
-            raise ValueError(f'File {path} cannot be prcessed')
+            raise ValueError(f'File {path} cannot be processed')
 
         
         df = pd.read_csv(path)
-        quotes = [QuoteModel(row['body'], row['author']) for idx in df]
+        quotes = [QuoteModel(df.loc[idx, 'body'], df.loc[idx, 'author']) for idx in range(len(df))]
         return quotes

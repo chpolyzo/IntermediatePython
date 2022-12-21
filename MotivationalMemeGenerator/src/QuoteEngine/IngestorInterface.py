@@ -22,7 +22,7 @@ class IngestorInterface(ABC):
     accepted_files = []
     
     @classmethod
-    def can_ingest(cls, path: str) -> boolean:
+    def can_ingest(cls, path: str) -> bool:
         """
         Boolean decision maker abstract method checking 
         if a certain file extension is permitted

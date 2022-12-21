@@ -11,17 +11,17 @@ from PIL import ImageDraw
 import random
 import string
 import textwrap
+import os
 
-class ImageGenerator(object):
-        """
-        ImageGenerator takes as input
-        input:the output directory specified.
-        method create_meme opens image and adds a quote inside the resized image 500 x 500
-    
-        es. meme = MemeEngine("./meme_directory")
-        output_path = meme.create_meme("path to image", "body of quote", "author of quote")
-        Pictures with the relative quotes are stored in the meme_directory.
-        """
+class MemeEngine(object):
+    """
+    ImageGenerator takes as input
+    input:the output directory specified
+    method create_meme opens image and adds a quote inside the resized image 500 x 500
+    es. meme = MemeEngine("./meme_directory")
+    output_path = meme.create_meme("path to image", "body of quote", "author of quote")
+    Pictures with the relative quotes are stored in the meme_directory.
+    """
 
     def __init__(self, output_directory):
         self.output_directory = output_directory
