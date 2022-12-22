@@ -29,9 +29,11 @@ class MemeEngine(object):
     def create_meme(self, image, body, author, width=500) -> str:
         try:
             img = Image.open(image)
+            print("Image Opened")
             img_aspect_ratio = img.width/img.height
             mm_width, mm_height = 500, int(500*img_aspect_ratio)
             resized_img = img.resize((mm_width, mm_height))
+            print("Image resized")
             
             # take the string overide
             quote = QuoteModel(body, author).__str__()
@@ -49,8 +51,10 @@ class MemeEngine(object):
             # create the final path
             output_path = os.path.join(self.output_directory, 
                                        ''.join(random.choice(string.ascii_letters) for x in range(15)) + '.png')
+            print(output_path)
             # save meme
             resized_img.save(output_path)
+            print("Image saved")
             return output_path
         
         except Exception as e:
